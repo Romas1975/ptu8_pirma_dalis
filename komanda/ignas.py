@@ -6,4 +6,5 @@ while True:
     if user_input != "":
         print_name(user_input)
     elif user_input == "":
+        print("Neparasete vardo, programa uzdaroma.")
         break
