@@ -1,0 +1,2 @@
+tekstas = "blynas"
+print(tekstas)
