@@ -68,75 +68,76 @@ class Kate:
         return f"({self.vardas}, {self.spalva}, {self.kojos})"
 
 
-kates = []
-while True:
-    print("===[ KATINYNAS ]===")
-    print("1 | prideti kate")
-    print("2 | rodyti kates")
-    print("7 | prideti/gydyti koja")
-    print("8 | lauzyti/atimti koja")
-    print("9 | palaidoti kate")
-    print("0 | padeti rageli")
-    try:
-        pasirinkimas = int(input("Pasirinkite:"))
-        logger.debug(f'pasirinkta: {pasirinkimas}')
-    except ValueError:
-        print("blogas pasirinkimas, bandykite dar")
-    else:
-        if pasirinkimas == 0:
-            break
-        if pasirinkimas == 1:
-            try:
-                nauja = Kate(
-                    input("Vardas: "),
-                    input("Spalva: ") or "Juodas",
-                    int(input("Kojos: ") or 4),
-                )
-            except ValueError as error:
-                logger.error(f"Klaida: {error}")
-                print(f"Klaida: {error}")
-            else:
-                kates.append(nauja)
-                print(f"Gime nauja kate {nauja}")
-        if pasirinkimas == 2:
-            if len(kates):
-                for id, kate in enumerate(kates):
-                    print(f"ID: {id}, {kate}")
-            else:
-                print('Kolkas kaciu nera...')
-        if pasirinkimas == 7:
-            try:
-                id = int(input("Iveskite kates ID: "))
-                kates[id].sugydyti_koja()
-            except ValueError as error:
-                logger.error(f"Klaida: {error}")
-                print("Klaida: ID turi buti skaicius")
-            except IndexError as error:
-                logger.error(f"Klaida: {error}")
-                print("Klaida: Kate su tokiu ID neegzistuoja")
-            else:
-                print(f"Kate: {kates[id]}")
-        if pasirinkimas == 8:
-            try:
-                id = int(input("Iveskite kates ID: "))
-                kates[id].susilauzyti_koja()
-            except ValueError as error:
-                logger.error(f"Klaida: {error}")
-                print("Klaida: ID turi buti skaicius")
-            except IndexError as error:
-                logger.error(f"Klaida: {error}")
-                print("Klaida: Kate su tokiu ID neegzistuoja")
-            else:
-                print(f"Kate: {kates[id]}")
-        if pasirinkimas == 9:
-            try:
-                id = int(input("Iveskite kates ID, kuria trinam: "))
-                palaidota = kates.pop(id)
-            except ValueError as error:
-                logger.error(f"Klaida: {error}")
-                print("Klaida: ID turi buti skaicius")
-            except IndexError as error:
-                logger.error(f"Klaida: {error}")
-                print("Klaida: Kate su tokiu ID neegzistuoja")
-            else:
-                print(f"Kate {palaidota} buvo palaidota")
+if __name__ == "__main__":
+    kates = []
+    while True:
+        print("===[ KATINYNAS ]===")
+        print("1 | prideti kate")
+        print("2 | rodyti kates")
+        print("7 | prideti/gydyti koja")
+        print("8 | lauzyti/atimti koja")
+        print("9 | palaidoti kate")
+        print("0 | padeti rageli")
+        try:
+            pasirinkimas = int(input("Pasirinkite:"))
+            logger.debug(f'pasirinkta: {pasirinkimas}')
+        except ValueError:
+            print("blogas pasirinkimas, bandykite dar")
+        else:
+            if pasirinkimas == 0:
+                break
+            if pasirinkimas == 1:
+                try:
+                    nauja = Kate(
+                        input("Vardas: "),
+                        input("Spalva: ") or "Juodas",
+                        int(input("Kojos: ") or 4),
+                    )
+                except ValueError as error:
+                    logger.error(f"Klaida: {error}")
+                    print(f"Klaida: {error}")
+                else:
+                    kates.append(nauja)
+                    print(f"Gime nauja kate {nauja}")
+            if pasirinkimas == 2:
+                if len(kates):
+                    for id, kate in enumerate(kates):
+                        print(f"ID: {id}, {kate}")
+                else:
+                    print('Kolkas kaciu nera...')
+            if pasirinkimas == 7:
+                try:
+                    id = int(input("Iveskite kates ID: "))
+                    kates[id].sugydyti_koja()
+                except ValueError as error:
+                    logger.error(f"Klaida: {error}")
+                    print("Klaida: ID turi buti skaicius")
+                except IndexError as error:
+                    logger.error(f"Klaida: {error}")
+                    print("Klaida: Kate su tokiu ID neegzistuoja")
+                else:
+                    print(f"Kate: {kates[id]}")
+            if pasirinkimas == 8:
+                try:
+                    id = int(input("Iveskite kates ID: "))
+                    kates[id].susilauzyti_koja()
+                except ValueError as error:
+                    logger.error(f"Klaida: {error}")
+                    print("Klaida: ID turi buti skaicius")
+                except IndexError as error:
+                    logger.error(f"Klaida: {error}")
+                    print("Klaida: Kate su tokiu ID neegzistuoja")
+                else:
+                    print(f"Kate: {kates[id]}")
+            if pasirinkimas == 9:
+                try:
+                    id = int(input("Iveskite kates ID, kuria trinam: "))
+                    palaidota = kates.pop(id)
+                except ValueError as error:
+                    logger.error(f"Klaida: {error}")
+                    print("Klaida: ID turi buti skaicius")
+                except IndexError as error:
+                    logger.error(f"Klaida: {error}")
+                    print("Klaida: Kate su tokiu ID neegzistuoja")
+                else:
+                    print(f"Kate {palaidota} buvo palaidota")
