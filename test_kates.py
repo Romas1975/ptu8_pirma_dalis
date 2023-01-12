@@ -3,27 +3,26 @@ from kates import *
 
 
 class TestKate(unittest.TestCase):
+
+    def setUp(self):
+        self.kate1 = Kate("Test")
+        self.kate2 = Kate("Test")
+        self.kates = [self.kate1, self.kate2]
+
     def test___init__(self):
-        kate1 = Kate("Test")
-        kate2 = Kate("Test")
-        print(kate1)
-        print(repr(kate1))
-        kates = [kate1, kate2]
-        print(kates)
-        self.assertEqual(repr(kate1), repr(kate2))
-        self.assertEqual(str(kate1), str(kate2))
-        self.assertIsNot(kate1, kate2)
+        self.assertEqual(repr(self.kate1), repr(self.kate2))
+        self.assertEqual(str(self.kate1), str(self.kate2))
+        self.assertIsNot(self.kate1, self.kate2)
 
     def test_susilauzyti_koja(self):
-        kate = Kate("Test")
-        kate.susilauzyti_koja()
-        self.assertEqual(kate.kojos, 3)
+        self.kate1.kojos = 4
+        self.kate1.susilauzyti_koja()
+        self.assertEqual(self.kate1.kojos, 3)
 
     def test_sugydyti_koja(self):
-        kate = Kate("Test")
-        kate.susilauzyti_koja()
-        kate.sugydyti_koja()
-        self.assertEqual(kate.kojos, 4)
+        self.kate1.susilauzyti_koja()
+        self.kate1.sugydyti_koja()
+        self.assertEqual(self.kate1.kojos, 4)
 
 if __name__ == "__main__":
     unittest.main()
